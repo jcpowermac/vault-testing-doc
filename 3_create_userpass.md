@@ -11,4 +11,4 @@ Success! Data written to: auth/userpass/users/jcallen
 ```
 
 
-[next](4_write_read_example.md)
+[Next](4_write_read_example.md)

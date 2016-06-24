@@ -3,6 +3,7 @@ For more details see Hashicorp Vault documentation. Since we will only have a si
 file as a backend is sufficient.
 
 [vault.hcl](example/vault.hcl) 
+---
 ```
 backend "file" {
   path = "/var/opt/hashicorp/vault/"
@@ -98,5 +99,5 @@ Key Threshold: 3
 Unseal Progress: 0
 ```
 
-[next](2_create_policy.md)
+[Next](2_create_policy.md)
 
