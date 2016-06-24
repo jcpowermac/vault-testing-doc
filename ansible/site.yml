@@ -1,0 +1,14 @@
+- name: Hashicorp Vault Module testing
+  hosts: localhost
+  gather_facts: False
+  tasks:
+    - vault:
+        url: "http://172.17.0.3:8200"
+        username: "jcallen"
+        password: "trustn01"
+        path: "secret/ansible/foo"
+      register: vault_result
+
+    - debug:
+        msg: "{{ vault_result }}"
+
