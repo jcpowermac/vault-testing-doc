@@ -6,7 +6,7 @@ I have broken the inital process into multiple markdown documents. [Start here](
 
 #### TOC
 
-[Initial Configuration](1_initial_config.md)
-[Create Policy](2_create_policy.md)
-[Create Username and Passwords](3_create_userpass.md)
-[Write and Read example](4_write_read_example.md)
+- [Initial Configuration](1_initial_config.md)
+- [Create Policy](2_create_policy.md)
+- [Create Username and Passwords](3_create_userpass.md)
+- [Write and Read example](4_write_read_example.md)
