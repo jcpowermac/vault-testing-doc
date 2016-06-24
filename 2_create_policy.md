@@ -1,6 +1,9 @@
-### Vault Policy
-Vault Policy for Ansible secrets
-#### ansible.hcl
+#### Vault Policy
+We want to create a policy where users only have access to a specific location.  
+The policy below will force `ansible` users to only read/write in the `secret/ansible` location.
+
+[ansible.hcl](example/ansible.hcl) 
+
 ```
 path "secret/ansible/*" {
   policy = "write"
@@ -15,6 +18,7 @@ path "auth/token/lookup-self" {
 }
 ```
 
+First we will auth using our root token
 ```
 > $ ./vault auth e2ce682e-60b1-78c6-efc0-f444c0c3c6fc                                                                                                                                                   ```
 ```
@@ -23,7 +27,11 @@ token: e2ce682e-60b1-78c6-efc0-f444c0c3c6fc
 token_duration: 0
 token_policies: [root]
 ```
+Next create the policy
 ```bash
 > $ ./vault policy-write ansible ansible.hcl
 Policy 'ansible' written.
 ```
+
+
+[next](3_create_userpass.md)

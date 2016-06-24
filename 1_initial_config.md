@@ -1,4 +1,8 @@
-#### Configuration
+#### [Server Configuration](https://www.vaultproject.io/docs/config/index.html)
+For more details see Hashicorp Vault documentation. Since we will only have a single node
+file as a backend is sufficient.
+
+[vault.hcl](example/vault.hcl) 
 ```
 backend "file" {
   path = "/var/opt/hashicorp/vault/"
@@ -9,12 +13,19 @@ listener "tcp" {
   tls_disable = 1
 }
 ```
-#### Docker RUN
-See [notes.md](motes.md) for more information
+
+#### Build Image
+```bash
+> $ sudo docker build -t vault .
+```
+
+#### Run Container
 ```bash
 > $ sudo docker run -it --cap-add IPC_LOCK vault                                                                                    ```
+```
+See [notes.md](notes.md) for more information regarding `--cap-add`.
 
-#### Results from RUN
+#### Immediate interactive results
 
 ```
 ==> Vault server configuration:
@@ -28,14 +39,18 @@ See [notes.md](motes.md) for more information
 ==> Vault server started! Log data will stream in below:
 ```
 
+The vault server is running in the container and I am running the client on my local machine.
+First we need to set an environmental variable.
 ```bash
 > $ export VAULT_ADDR='http://172.17.0.3:8200'
 ```
-### vault init
+#### vault init
+Next initialize the vault.
 ```bash
 ./vault init
 ```
-#### Results from vault init
+Typically the unseal keys would be kept private but this is just an example.  By default
+five unseal keys are created.
 ```
 Unseal Key 1: 19ba958fd12e7c15bc5e6f228e48a847d04447aba1773f233c4da031bb6589b601
 Unseal Key 2: 19d0d0fffd4668fd51b5e6380c49c6c8624393e5be1e35b9b7742260a57641b302
@@ -54,11 +69,12 @@ your Vault will remain permanently sealed.
 
 ```
 
-### vault unseal
+#### vault unseal
 ```
 ./vault unseal
 ```
-#### Results from unseal
+Unseal needs to be ran for at least three times in this example based on the current `key threshold`.
+
 ```bash
 > $ ./vault unseal
 Key (will be hidden):
@@ -81,3 +97,6 @@ Key Shares: 5
 Key Threshold: 3
 Unseal Progress: 0
 ```
+
+[next](2_create_policy.md)
+
