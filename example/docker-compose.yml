@@ -1,0 +1,20 @@
+---
+version: '2'
+services:
+  vaultjs:
+    image: vaultjs
+    links:
+      - vault:vault
+    build: node/.
+    ports:
+      - "8080:8080"
+      - "5858:5858"
+  vault:
+    image: vault
+    cap_add:
+      - IPC_LOCK
+    build: vault/.
+    expose:
+      - "8200"
+    ports:
+      - "8200:8200"
