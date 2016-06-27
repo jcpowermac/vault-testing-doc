@@ -15,16 +15,25 @@ listener "tcp" {
 }
 ```
 
-#### Build Image
+#### Using Docker Compose
 ```bash
-> $ sudo docker build -t vault .
+> $ cd example
+> $ sudo docker-compose run vault
 ```
 
-#### Run Container
+#### Build Image and Run manually
 ```bash
+> $ cd example/vault
+> $ sudo docker build -t vault .
 > $ sudo docker run -it --cap-add IPC_LOCK vault                                                                                    ```
 ```
 See [notes.md](notes.md) for more information regarding `--cap-add`.
+
+#### Using Docker Compose
+```bash
+> $ cd example
+> $ sudo docker-compose run vault
+```
 
 #### Immediate interactive results
 

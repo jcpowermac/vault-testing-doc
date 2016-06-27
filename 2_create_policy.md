@@ -2,7 +2,7 @@
 We want to create a policy where users only have access to a specific location.  
 The policy below will force `ansible` users to only read/write in the `secret/ansible` location.
 
-[ansible.hcl](example/ansible.hcl) 
+[ansible.hcl](example/vault/ansible.hcl) 
 
 ```
 path "secret/ansible/*" {
